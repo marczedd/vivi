@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#fff8d9">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Vivi">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="assets/icon-192.png">
+    <title>Vivi • Your little growing companion</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">Skip to tracker</a>
+    <main id="main" class="app-shell">
+        <header class="app-header" aria-label="Live plant sensors">
+            <button class="plant-status sun-status" id="sensorButton" aria-label="Sunlight tracker: 720 lux. Open sensor details.">
+                <span class="top-track"><span id="topFill"></span></span>
+                <svg class="status-star" viewBox="0 0 90 90" aria-hidden="true">
+                    <path class="star-shape" d="M41.98 6.83 Q45.00 3.00 48.02 6.83 L57.85 19.33 Q60.87 23.16 65.44 24.84 L80.37 30.34 Q84.94 32.02 82.23 36.07 L73.39 49.29 Q70.68 53.34 70.49 58.21 L69.88 74.11 Q69.69 78.98 65.00 77.65 L49.69 73.33 Q45.00 72.00 40.31 73.33 L25.00 77.65 Q20.31 78.98 20.12 74.11 L19.51 58.21 Q19.32 53.34 16.61 49.29 L7.77 36.07 Q5.06 32.02 9.63 30.34 L24.56 24.84 Q29.13 23.16 32.15 19.33 L41.98 6.83 Z"/>
+                    <g fill="#eeb100" transform="translate(45 45)">
+                        <circle r="11"/>
+                        <path d="M-3-17 0-23 3-17Z"/>
+                        <path d="M-3-17 0-23 3-17Z" transform="rotate(45)"/>
+                        <path d="M-3-17 0-23 3-17Z" transform="rotate(90)"/>
+                        <path d="M-3-17 0-23 3-17Z" transform="rotate(135)"/>
+                        <path d="M-3-17 0-23 3-17Z" transform="rotate(180)"/>
+                        <path d="M-3-17 0-23 3-17Z" transform="rotate(225)"/>
+                        <path d="M-3-17 0-23 3-17Z" transform="rotate(270)"/>
+                        <path d="M-3-17 0-23 3-17Z" transform="rotate(315)"/>
+                    </g>
+                </svg>
+                <span class="tracker-reading" id="topLight">720 lux</span>
+            </button>
+            <button class="plant-status water-status" id="waterTrackerButton" aria-label="Soil water tracker: 62 percent. Open watering details.">
+                <span class="top-track"><span id="topWaterFill"></span></span>
+                <svg class="status-star" viewBox="0 0 90 90" aria-hidden="true">
+                    <path class="star-shape" d="M41.98 6.83 Q45.00 3.00 48.02 6.83 L57.85 19.33 Q60.87 23.16 65.44 24.84 L80.37 30.34 Q84.94 32.02 82.23 36.07 L73.39 49.29 Q70.68 53.34 70.49 58.21 L69.88 74.11 Q69.69 78.98 65.00 77.65 L49.69 73.33 Q45.00 72.00 40.31 73.33 L25.00 77.65 Q20.31 78.98 20.12 74.11 L19.51 58.21 Q19.32 53.34 16.61 49.29 L7.77 36.07 Q5.06 32.02 9.63 30.34 L24.56 24.84 Q29.13 23.16 32.15 19.33 L41.98 6.83 Z"/>
+                    <path d="M45 23C41 33 32 43 32 52A13 13 0 0 0 58 52C58 43 49 33 45 23Z" fill="#59a4df"/>
+                    <path d="M38 50Q36 57 43 60" fill="none" stroke="#ffecaa" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+                <span class="tracker-reading" id="topWater">62%</span>
+            </button>
+            <button id="careButton" class="temperature-tracker" aria-label="Temperature: 26 degrees Celsius. Open temperature details.">
+                <span id="topTemp">26.0</span><span>°C</span>
+            </button>
+        </header>
+        <div class="dashboard">
+            <section class="companion" aria-label="Vivi interactive plant companion">
+                <img class="vivi-logo" src="assets/logo.png" alt="Vivi">
+                <div class="speech" id="viviSpeech" role="status">Vivi is connected!</div>
+                <div class="egg">
+                    <img class="egg-art" id="eggSkin" src="assets/egg.png" alt="Sunshine: green egg decorated with yellow stars">
+                    <button class="skin-arrow skin-previous" id="previousSkin" aria-label="Previous egg design">
+                        <svg viewBox="0 0 24 32" aria-hidden="true"><path d="M17 6 7 16l10 10"/></svg>
+                    </button>
+                    <button class="skin-arrow skin-next" id="nextSkin" aria-label="Next egg design">
+                        <svg viewBox="0 0 24 32" aria-hidden="true"><path d="m7 6 10 10L7 26"/></svg>
+                    </button>
+                    <span class="visually-hidden" id="skinAnnouncement" role="status" aria-live="polite">Sunshine egg selected</span>
+                    <div class="screen"><span class="screen-label">MY LITTLE GARDEN</span><img id="viviCharacter" src="assets/happy.gif" alt="Vivi, a happy animated sprout"><span class="screen-mood" id="screenMood">Growing happy </span><div id="hearts" aria-hidden="true"></div></div>
+                    <div class="egg-controls">
+                        <button id="settingsButton" class="art-button" aria-label="Settings"><img src="assets/settings.png" alt=""><span>Settings</span></button>
+                        <button id="waterButton" class="art-button lower" aria-label="Water Vivi"><img src="assets/water.png" alt=""><span>Water</span></button>
+                        <button id="loveButton" class="art-button" aria-label="Give Vivi some love"><img src="assets/love.png" alt=""><span>Love</span></button>
+                    </div>
+                </div>
+                <div class="companion-caption"><span></span> Small moments. Stronger roots. <span></span></div>
+            </section>
+
+            <aside class="right-column">
+                <section class="panel notification-panel" id="notificationPanel" aria-labelledby="notificationHeading" hidden>
+                    <div class="title-row"><h2 id="notificationHeading">Notifications <span class="count" id="noteCount">1</span></h2><button class="text-button" id="clearNotes">Clear</button></div>
+                    <p class="muted">Little updates from your leafy friend.</p>
+                    <ol id="notifications" aria-label="Notification history"></ol>
+                    <p id="emptyNotes" hidden>Your garden is all quiet.</p>
+                </section>
+            </aside>
+        </div>
+
+    </main>
+    <dialog id="careDialog" aria-labelledby="careTitle">
+        <div class="title-row"><h2 id="careTitle">Vivi’s plant tracker</h2><button class="close-button" id="closeCare" aria-label="Close plant tracker">×</button></div>
+            <section class="panel sensor-panel" aria-labelledby="sensorHeading">
+                <div class="section-top"><span class="mini-icon"></span><span class="eyebrow">THE LITTLE DETAILS</span></div>
+                <h2 id="sensorHeading">How’s Vivi feeling?</h2>
+                <p class="muted">A peek into your plant’s world.</p>
+                <div class="sensor-list">
+                    <article class="sensor sun"><div class="sensor-label"><span> &nbsp; Sunlight</span><span class="tag" id="lightTag">Just right</span></div><div class="sensor-value"><span id="lightValue">720</span><small>lux</small></div><div class="meter"><div id="lightBar" style="width:60%"></div></div><p>Ideal range: 400–1,000 lux</p></article>
+                    <article class="sensor moisture"><div class="sensor-label"><span> &nbsp; Soil moisture</span><span class="tag" id="moistureTag">Nicely hydrated</span></div><div class="sensor-value"><span id="moistureValue">62</span><small>%</small></div><div class="meter"><div id="moistureBar" style="width:62%"></div></div><p>Ideal range: 40–75%</p></article>
+                    <article class="sensor temperature"><div class="sensor-label"><span> &nbsp; Temperature</span><span class="tag" id="tempTag">Cozy</span></div><div class="sensor-value"><span id="tempValue">26</span><small>°C</small></div><div class="meter"><div id="tempBar" style="width:65%"></div></div><p>Ideal range: 18–30°C</p></article>
+                </div>
+                <div class="live-note"><span class="status-dot"></span><span id="updateText">Simulated sensors · updates every 8s</span></div>
+            </section>
+
+                <section class="panel watering-panel" aria-labelledby="waterHeading">
+                    <div class="section-top"><span class="mini-icon blue"></span><span class="eyebrow">A SIP OF HAPPINESS</span></div>
+                    <div class="title-row"><h2 id="waterHeading">Watering care</h2><label class="switch"><input type="checkbox" id="autoWater" checked aria-label="Automatic watering"><span></span></label></div>
+                    <div class="auto-badge" id="autoLabel"> Auto-watering is on</div>
+                    <p class="muted">We’ll give Vivi a drink when soil moisture drops below <strong>40%</strong>.</p>
+                    <div class="water-stats"><div><span>LAST WATERED</span><strong id="lastWatered">Not yet</strong></div><div><span>SESSION SIPS</span><strong id="waterCount">0 <small> / 50 mL each</small></strong></div></div>
+                    <button class="primary-button" id="waterNow">Give Vivi a drink <span></span></button>
+                </section>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <dialog id="settingsDialog" aria-labelledby="settingsTitle">
+        <div class="title-row"><h2 id="settingsTitle">Vivi’s settings </h2><button class="close-button" id="closeSettings" aria-label="Close settings">×</button></div>
+        <p class="muted">Your little garden, your way.</p>
+        <button id="connectionStatus" class="settings-connection" aria-label="Connection status"><span class="status-dot"></span><span id="connectionText">Connected</span></button>
+        <div class="setting-row"><div><h3>Plant connection</h3><p>Pause or resume the simulated sensors.</p></div><button class="secondary-button" id="toggleConnection">Disconnect</button></div>
+        <div class="setting-row"><div><h3>Reduced motion</h3><p>A calmer experience for you and Vivi.</p></div><input id="reduceMotion" type="checkbox" aria-label="Reduce motion"></div>
+    </dialog>
+</body>
+</html>
