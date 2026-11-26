@@ -1,12 +1,12 @@
 'use strict';
 
 // Cache the app shell for offline launches after the first successful visit.
-const CACHE = 'vivi-app-v1';
+const CACHE = 'vivi-app-v3';
 const FILES = [
     './', 'index.html', 'styles.css', 'app.js', 'manifest.webmanifest',
     'assets/egg.png', 'assets/egg-strawberry.png', 'assets/egg-garden.png',
     'assets/settings.png', 'assets/water.png', 'assets/love.png',
-    'assets/logo.png', 'assets/happy.gif', 'assets/loved.png',
+    'assets/logo.png', 'assets/happy.gif', 'assets/loved.png', 'assets/Vivi_loved.gif',
     'assets/patrick-hand.ttf', 'assets/icon-192.png', 'assets/icon-512.png'
 ];
 
