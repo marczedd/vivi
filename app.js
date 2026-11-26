@@ -156,13 +156,15 @@ function checkAutoWater() {
 function setMotion() {
     document.body.classList.toggle('reduced-motion', state.reduced);
     $('reduceMotion').checked = state.reduced;
-    $('viviCharacter').src = state.reduced || loving ? 'assets/loved.png' : 'assets/happy.gif';
+    $('viviCharacter').src = state.reduced
+        ? 'assets/loved.png'
+        : loving ? 'assets/Vivi_loved.gif' : 'assets/happy.gif';
 }
 
 function giveLove() {
     clearTimeout(loveTimer);
     loving = true;
-    $('viviCharacter').src = 'assets/loved.png';
+    setMotion();
     $('viviCharacter').classList.remove('loved');
     void $('viviCharacter').offsetWidth;
     $('viviCharacter').classList.add('loved');
